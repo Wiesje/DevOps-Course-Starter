@@ -12,12 +12,20 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in item_list %}
-        <li>{{item["name"]}}</li>
+          <li>
+            {{item["name"]}}
+              <form action="/complete_item" method="POST">
+                <div>
+                  <input type="hidden" name="item_id" value="{{item['id']}}">
+                  <input type="submit" value="done">
+              </div>
+              </form>
+          </li>
         {% endfor %}
       </ul>
     </div>
     <div class="col-md-12">
-      <form method="POST">
+      <form action="/new" method="POST">
         <div>
           <label>Add to-do item:</label>
           <input type="text" name="new_item" required>

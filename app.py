@@ -17,7 +17,14 @@ def index():
     item_list = r.json()
     return render_template('index.html', item_list = item_list)
 
-@app.route('/', methods=['POST'])
+@app.route('/complete_item', methods=['POST'])
+def move_item_to_done():
+    item_id = request.form.get('item_id')
+    print(item_id)
+
+    return redirect(url_for('index'))
+
+@app.route('/new', methods=['POST'])
 def add_item():
     new_item = request.form.get('new_item')
     requests.post(f"{baseUrl}/1/cards?key={yourKey}&token={yourToken}&idList={listId}&name={new_item}")
