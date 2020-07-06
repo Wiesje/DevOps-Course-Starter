@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
-import session_items as session
 import requests
 import LinkBuilder
 
 app = Flask(__name__)
-app.config.from_object('flask_config.Config')
 
 link_builder = LinkBuilder.LinkBuilder()
 
