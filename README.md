@@ -33,6 +33,6 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 ## Setting up secrets.py
 To link the app to your own Trello board, create an API key and token [here](https://trello.com/app-key) and paste them in a file called secrets.py which should look like this:
 ```python
-TRELLO_API_KEY = "32c28cb9001dc2b9c5d926645a3bf835"
-TRELLO_API_TOKEN = "7ff7347e9c264e348adce9432b27b23b6b35f5d200941d08445a5095083d5669"
+TRELLO_API_KEY = "XXXXXXXXXXXXX"
+TRELLO_API_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXX"
 ```
