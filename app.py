@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import LinkBuilder
+import Item
 
 app = Flask(__name__)
 
@@ -9,7 +10,11 @@ link_builder = LinkBuilder.LinkBuilder()
 @app.route('/')
 def index():
     r = requests.get(link_builder.get_index_link())
-    item_list = r.json()
+    list_of_dicts = r.json()
+    item_list = []
+    for dict in list_of_dicts:
+        item = Item.Item(dict['id'], dict['name'])
+        item_list.append(item)
     return render_template('index.html', item_list = item_list)
 
 @app.route('/complete_item', methods=['POST'])
