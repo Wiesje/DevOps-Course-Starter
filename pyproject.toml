@@ -1,8 +1,0 @@
-[tool.poetry]
-name = "DevOps Course"
-version = "0.1.0"
-description = "Wiesje's version of the DevOps course exercises"
-authors = ["Wiesje van den Heerik"]
-
-[tool.poetry.dependencies]
-python = "^3.8"
