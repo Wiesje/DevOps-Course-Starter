@@ -1,19 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for
-import session_items as session
+from trello import Trello
 
 app = Flask(__name__)
-app.config.from_object('flask_config.Config')
 
 @app.route('/')
 def index():
-    item_list = session.get_items()
+    item_list = Trello.fetch_all_items()
     return render_template('index.html', item_list = item_list)
 
-@app.route('/', methods=['POST'])
+@app.route('/complete_item', methods=['POST'])
+def move_item_to_done():
+    Trello.complete_item(request.form.get('item_id'))
+    return redirect(url_for('index'))
+
+@app.route('/new', methods=['POST'])
 def add_item():
     new_item = request.form.get('new_item')
-    session.add_item(new_item)
-
+    Trello.add_item(new_item)
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

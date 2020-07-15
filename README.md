@@ -29,3 +29,10 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Setting up secrets.py
+To link the app to your own Trello board, create an API key and token [here](https://trello.com/app-key) and paste them in a file called secrets.py which should look like this:
+```python
+TRELLO_API_KEY = "XXXXXXXXXXXXX"
+TRELLO_API_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXX"
+```
