@@ -121,3 +121,5 @@ venv
 
 # Selenium
 geckodriver.log
+
+.vagrant
