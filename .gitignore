@@ -111,9 +111,13 @@ dmypy.json
 
 ### Virtual environment ###
 env/
+venv
 
 ### Configuration files ###
 .env
 
-### Secret files ###
-secrets.py
+# IDE
+.idea
+
+# Selenium
+geckodriver.log

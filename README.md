@@ -8,6 +8,10 @@ The project uses a virtual environment to isolate package dependencies. To creat
 ```bash
 $ source setup.sh
 ```
+### On Windows (Using PowerShell)
+```powershell
+$ .\setup.ps1
+```
 ### On Windows (Using Git Bash)
 ```bash
 $ source setup.sh --windows
@@ -30,9 +34,9 @@ You should see output similar to the following:
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
 
-## Setting up secrets.py
-To link the app to your own Trello board, create an API key and token [here](https://trello.com/app-key) and paste them in a file called secrets.py which should look like this:
-```python
-TRELLO_API_KEY = "XXXXXXXXXXXXX"
-TRELLO_API_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXX"
-```
+### Notes
+
+The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like developement mode (which also enables features like hot reloading when you make a file change).
+* There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
+
+When running `setup.sh`, the `.env.template` file will be copied to `.env` if the latter does not exist.
