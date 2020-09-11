@@ -121,3 +121,6 @@ venv
 
 # Selenium
 geckodriver.log
+
+# secrets
+secrets.py

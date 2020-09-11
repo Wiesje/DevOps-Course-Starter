@@ -40,3 +40,9 @@ The `.env` file is used by flask to set environment variables when running `flas
 * There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
 
 When running `setup.sh`, the `.env.template` file will be copied to `.env` if the latter does not exist.
+
+### Secrets
+Create a file `secrets.py` where you specify your TRELLO_API_KEY, TRELLO_API_SECRET and TRELLO_BOARD_ID.
+
+### Running tests
+To run the tests, run `pytest tests` and `pytest tests_e2e`
