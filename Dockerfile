@@ -1,13 +1,14 @@
 FROM python:3.8.5-buster
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN pip install poetry
 
 EXPOSE 8000
 
+WORKDIR /code
 COPY . /code/
 
-RUN source setup.sh
+RUN poetry install --no-root --no-dev
 
-ENTRYPOINT flask run -h 0.0.0.0 -p 8000
+ENTRYPOINT poetry run flask run -h 0.0.0.0 -p 8000
 
 
