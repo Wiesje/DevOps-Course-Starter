@@ -112,6 +112,7 @@ dmypy.json
 ### Virtual environment ###
 env/
 venv
+.venv/
 
 ### Configuration files ###
 .env
@@ -124,3 +125,4 @@ geckodriver.log
 
 # secrets
 secrets.py
+
