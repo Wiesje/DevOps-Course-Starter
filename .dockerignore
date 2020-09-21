@@ -123,5 +123,7 @@ venv
 # Selenium
 geckodriver.log
 
-
+### Docker ###
+Dockerfile
+.dockerignore
 
