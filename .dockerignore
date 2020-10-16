@@ -123,7 +123,11 @@ venv
 # Selenium
 geckodriver.log
 
-.vagrant
+### Docker ###
+Dockerfile
+.dockerignore
 
-# secrets
-secrets.py
+.git
+.vagrant
+Vagrantfile
+
