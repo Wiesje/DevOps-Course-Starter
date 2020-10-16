@@ -123,5 +123,7 @@ venv
 # Selenium
 geckodriver.log
 
+.vagrant
 
-
+# secrets
+secrets.py
