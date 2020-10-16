@@ -51,8 +51,25 @@ You should see output similar to the following:
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
 
+## Running the App with docker
+
+Run the app in a docker container by navigating to the relevant folder and running:
+```bash
+$ docker-compose up --build
+```
+
+To stop the app, run:
+```bash
+$ docker-compose down
+```
+
+To check if you have running containers run:
+```bash
+$ docker container list
+```
+
 ### Secrets
-Create a file `secrets.py` where you specify your TRELLO_API_KEY, TRELLO_API_SECRET and TRELLO_BOARD_ID.
+Create a file `.env` where you specify your TRELLO_API_KEY, TRELLO_API_SECRET and TRELLO_BOARD_ID.
 
 ### Running tests
 To run the tests, run `pytest tests` and `pytest tests_e2e`

@@ -127,3 +127,7 @@ geckodriver.log
 Dockerfile
 .dockerignore
 
+.git
+.vagrant
+Vagrantfile
+
