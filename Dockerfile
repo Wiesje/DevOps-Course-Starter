@@ -15,3 +15,7 @@ ENTRYPOINT poetry run flask run -h 0.0.0.0 -p 8000
 FROM base as prod
 ENV FLASK_ENV=production
 ENTRYPOINT poetry run gunicorn "app:create_app()" --bind 0.0.0.0:8000
+
+
+FROM base as test
+ENTRYPOINT [ "poetry", "run", "pytest" ]

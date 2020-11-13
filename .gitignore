@@ -124,6 +124,3 @@ venv
 geckodriver.log
 
 .vagrant
-
-# secrets
-secrets.py
