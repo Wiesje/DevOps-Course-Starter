@@ -56,11 +56,12 @@ def test_app():
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Firefox()
-    yield driver
-
-    # Tear Down
-    driver.quit()
+    opts = webdriver.ChromeOptions()
+    opts.add_argument('--headless')
+    opts.add_argument('--no-sandbox')               # docker workaround
+    opts.add_argument('--disable-dev-shm-usage')    # docker workaround
+    with webdriver.Chrome('./chromedriver', options=opts) as driver:
+        yield driver
 
 
 def test_task_journey(driver, test_app):

@@ -57,6 +57,7 @@ Run the app in a docker container by navigating to the relevant folder and runni
 ```bash
 $ docker-compose up --build
 ```
+You should now be able to view the app by visiting [`http://localhost:8080/`](http://localhost:8080/) in your web browser.
 
 To stop the app, run:
 ```bash
@@ -72,4 +73,9 @@ $ docker container list
 Create a file `.env` where you specify your TRELLO_API_KEY, TRELLO_API_SECRET and TRELLO_BOARD_ID.
 
 ### Running tests
-To run the tests, run `pytest tests` and `pytest tests_e2e`
+To run the tests, run `poetry run pytest tests` and `poetry run pytest tests_e2e`
+
+### Running tests in docker
+`docker build --target test --tag my-test-image .`
+`docker run my-test-image tests`
+`docker run --env-file .env my-test-image tests_e2e`
