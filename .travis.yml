@@ -1,7 +1,5 @@
 env:
-  global:
-    - secure:
-      XVSm+sZwXIh7S2Nn01FPyh7HKkFS/ZZ0YL0e1PODad6X17ytr0DPw/fA2KAHNN+SB6qC6e3cbsVSXxpaZsDlRYBmxRew8WFN00Fvh/jQ4izJx etc 
+  - secure: XVSm+sZwXIh7S2Nn01FPyh7HKkFS/ZZ0YL0e1PODad6X17ytr0DPw/fA2KAHNN+SB6qC6e3cbsVSXxpaZsDlRYBmxRew8WFN00Fvh/jQ4izJx etc 
 
 script:
   - docker build --target test --tag my-test-image .
