@@ -76,6 +76,17 @@ Create a file `.env` where you specify your TRELLO_API_KEY, TRELLO_API_SECRET an
 To run the tests, run `poetry run pytest tests` and `poetry run pytest tests_e2e`
 
 ### Running tests in docker
-`docker build --target test --tag my-test-image .`
-`docker run my-test-image tests`
-`docker run --env-file .env my-test-image tests_e2e`
+To build the test image, run 
+```bash
+$ docker build --target test --tag my-test-image .
+```
+
+After building, run the unit tests by running 
+```bash
+$ docker run my-test-image tests
+```
+
+And the end to end tests by running 
+```bash
+$ docker run --env-file .env my-test-image tests_e2e
+```
