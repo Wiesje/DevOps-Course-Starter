@@ -2,7 +2,7 @@ script:
 - docker build --target test --tag my-test-image .
 - docker run my-test-image tests
 - docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image tests_e2e
-- docker login -p DOCKER_HUB_PASSWORD -u DOCKER_HUB_USERNAME
+- docker login -p DOCKER_HUB_PASSWORD -u $DOCKER_HUB_USERNAME
 
 env:
   global:
