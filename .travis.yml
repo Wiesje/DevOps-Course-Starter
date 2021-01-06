@@ -3,7 +3,7 @@ script:
 - docker run my-test-image tests
 - docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image
   tests_e2e
-- docker login -p DOCKER_HUB_PASSWORD -u DOCKER_HUB_USERNAME
+- echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
 env:
   global:
   - secure: c47wQCrJKj9HYS7WtPKXTNJDCONvDLVB1FnzHVi6OXzaHiuzHSJORsmy7mfzs2fSGuXQk+itLT6SMSNGyZUihpxCq75N8Jk6Ye8e6bJW0nDd/3GlsCdroMeqBC3HE6W2pYpcRdrsDJ7A9Yctk1904ZkcjH629Gm+u7t4Li8HRjzPHJ9uUuNIIrh/F1oMhc94Hqn4lXrK+eJuGzrAv01lpm7rcaDPXqAlp+KDgkH7g1pkNooCB1C1G2z7dwisTO9dHGQH3MxvNcpAhfQnT2Ui54ypcT5UuF6VlbJyKIveSWxduAIdQBgXnImKTtoiwbE+EYy5lBsTim6NBeyxg7iQ2tSolFtnHIEKTRrw3/yCDmTMiAa/G89JOFf5L1gXmZoHLOncChWMeOf3vHLwmtPHjFG7Z6F+LscdKJ8QOcKmo1UaqdGvC9WrW/SNz2l5gESQNPrM2naFVdXZgFlDQpuDxkPrM5I7C2dvoY8YBT6jTF06x9UuD4PLox3YQhj1sA56sRHc/V50JSLbOw8O7cxiYR19PwNAdAf5rzsUwiVVFavHopb6TAGdpQmAc6UKEWHIAQFcwbgYk7hfZz1Yh+ujrP3bFsgsIxuE27mFVpqu6KDG0MYtCUW9pk066nXVtsbpdcaIL9xV/doYjsBJJcbLy0qG+CYYicfbijrgYT34fhI=
