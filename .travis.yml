@@ -7,9 +7,9 @@ script:
 deploy:
   provider: script
   script: 
-    - docker build --target prod --tag wiehee/todo-app-devops-course .
-    - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
-    - docker push wiehee/todo-app-devops-course
+    - docker build --target prod --tag wiehee/todo-app-devops-course:$TRAVIS_COMMIT . &&
+      echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin &&
+      docker push wiehee/todo-app-devops-course:$TRAVIS_COMMIT
   on:
     branch: exercise-8
 
