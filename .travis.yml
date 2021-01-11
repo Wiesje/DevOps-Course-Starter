@@ -4,14 +4,13 @@ script:
 - docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image
   tests_e2e
 
-after_success:
-  deploy:
-    provider: script
-    script: 
-      - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
-      - docker push
-    on:
-      branch: exercise-8
+deploy:
+  provider: script
+  script: 
+    - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+    - docker push
+  on:
+    branch: exercise-8
 
 env:
   global:
