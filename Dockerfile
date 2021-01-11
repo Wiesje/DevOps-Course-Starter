@@ -10,7 +10,7 @@ COPY . /code/
 
 FROM base as dev
 RUN poetry install --no-root --no-dev
-CMD poetry run flask run -h 0.0.0.0 -p 8000
+ENTRYPOINT poetry run flask run -h 0.0.0.0 -p 8000
 
 FROM base as prod
 RUN poetry install --no-root --no-dev
@@ -33,4 +33,4 @@ RUN LATEST=`curl -sSL https://chromedriver.storage.googleapis.com/LATEST_RELEASE
     unzip ./chromedriver_linux64.zip
 
 RUN poetry install --no-root
-CMD [ "poetry", "run", "pytest" ]
+ENTRYPOINT [ "poetry", "run", "pytest" ]
