@@ -7,8 +7,9 @@ script:
 deploy:
   provider: script
   script: 
+    - docker build --target prod --tag wiehee/todo-app-devops-course .
     - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
-    - docker push my-test-image
+    - docker push wiehee/todo-app-devops-course
   on:
     branch: exercise-8
 
