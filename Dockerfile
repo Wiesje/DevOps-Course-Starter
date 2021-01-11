@@ -10,15 +10,14 @@ COPY . /code/
 
 FROM base as dev
 RUN poetry install --no-root --no-dev
-ENTRYPOINT poetry run flask run -h 0.0.0.0 -p 8000
+CMD poetry run flask run -h 0.0.0.0 -p 8000
 
 FROM base as prod
 RUN poetry install --no-root --no-dev
 ENV FLASK_ENV=production
-ENTRYPOINT poetry run gunicorn "app:create_app()" --bind 0.0.0.0:8000
+CMD poetry run gunicorn "app:create_app()" --bind 0.0.0.0:$PORT
 
 FROM base as test
-
 RUN apt-get update; apt-get install curl -y
 
 #Install Chrome
@@ -34,4 +33,4 @@ RUN LATEST=`curl -sSL https://chromedriver.storage.googleapis.com/LATEST_RELEASE
     unzip ./chromedriver_linux64.zip
 
 RUN poetry install --no-root
-ENTRYPOINT [ "poetry", "run", "pytest" ]
+CMD [ "poetry", "run", "pytest" ]
