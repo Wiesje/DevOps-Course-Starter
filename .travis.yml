@@ -8,7 +8,7 @@ deploy:
   provider: script
   script: 
     - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
-    - docker push
+    - docker push my-test-image
   on:
     branch: exercise-8
 
