@@ -14,6 +14,7 @@ ENTRYPOINT poetry run flask run -h 0.0.0.0 -p 8000
 
 
 FROM base as prod
+RUN poetry config virtualenvs.create false --local
 RUN poetry install --no-root --no-dev
 ENV FLASK_ENV=production
 CMD poetry run gunicorn "app:create_app()" --bind 0.0.0.0:$PORT
