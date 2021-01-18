@@ -3,13 +3,16 @@ script:
 - docker run my-test-image tests
 - docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image
   tests_e2e
+
+before_deploy:
+- docker build --target prod --tag wiehee/todo-app-devops-course:$TRAVIS_COMMIT --tag registry.heroku.com/todo-app-devops-course/web .
+- echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+- echo $HEROKU_API_KEY | docker login --username $HEROKU_USERNAME --password-stdin registry.heroku.com
+
 deploy:
   provider: script
   script:
-  - docker build --target prod --tag wiehee/todo-app-devops-course:$TRAVIS_COMMIT --tag registry.heroku.com/todo-app-devops-course/web
-    . && echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME
-    --password-stdin && docker push wiehee/todo-app-devops-course:$TRAVIS_COMMIT &&
-    echo $HEROKU_API_KEY | docker login --username $HEROKU_USERNAME --password-stdin registry.heroku.com &&
+  - docker push wiehee/todo-app-devops-course:$TRAVIS_COMMIT &&
     docker push registry.heroku.com/todo-app-devops-course/web &&
     heroku container:release web -a todo-app-devops-course
   on:
