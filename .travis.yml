@@ -16,7 +16,7 @@ deploy:
     docker push registry.heroku.com/todo-app-devops-course/web &&
     heroku container:release web -a todo-app-devops-course
   on:
-    branch: exercise-8
+    branch: master
 env:
   global:
   - HEROKU_USERNAME=wiehee
