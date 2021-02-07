@@ -6,15 +6,13 @@ class Item:
     def __init__(self, id, name, last_modified, status='To Do'):
         self.id = id
         self.name = name
-        self.last_modified = last_modified
         self.status = status
 
     @classmethod
     def fromTrelloCard(cls, card, list):
         return cls(
-            card['id'],
+            card['_id'],
             card['name'],
-            datetime.strptime(card['dateLastActivity'], '%Y-%m-%dT%H:%M:%S.%fZ'),
             list['name']
         )
 
@@ -27,11 +25,8 @@ class Item:
     def complete(self):
         self.status = 'Done'
 
-    def modified_today(self):
-        return self.last_modified.date() == date.today()
-
     def __repr__(self):
-        return f"id: {self.id}, name: {self.name}, status: {self.status}, last_modified: {self.last_modified}"
+        return f"id: {self.id}, name: {self.name}, status: {self.status}"
 
     def __eq__(self, other):
         if not isinstance(other, Item):

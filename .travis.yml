@@ -1,8 +1,7 @@
 script:
 - docker build --target test --tag my-test-image .
 - docker run my-test-image tests
-- docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image
-  tests_e2e
+- docker run -e TRELLO_API_KEY -e TRELLO_API_SECRET -e TRELLO_BOARD_ID my-test-image tests_e2e
 
 before_deploy:
 - docker build --target prod --tag wiehee/todo-app-devops-course:$TRAVIS_COMMIT --tag registry.heroku.com/todo-app-devops-course/web .

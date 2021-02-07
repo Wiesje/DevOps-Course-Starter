@@ -48,17 +48,29 @@ def get_board(name):
 
 
 def get_lists():
-    """
-    Fetches all lists for the default Trello board.
+    # """
+    # Fetches all lists for the default Trello board.
 
-    Returns:
-        list: The list of Trello lists.
-    """
-    params = build_params({ 'cards': 'open' }) # Only return cards that have not been archived
-    url = build_url('/boards/%s/lists' % app.config['TRELLO_BOARD_ID'])
+    # Returns:
+    #     list: The list of Trello lists.
+    # """
+    # params = build_params({ 'cards': 'open' }) # Only return cards that have not been archived
+    # url = build_url('/boards/%s/lists' % app.config['TRELLO_BOARD_ID'])
 
-    response = requests.get(url, params = params)
-    lists = response.json()
+    # response = requests.get(url, params = params)
+    # lists = response.json()
+    import pymongo
+    password = app.config['MONGO_DB_PASSWORD']
+    client = pymongo.MongoClient(f"mongodb+srv://wiesje:{password}@cluster0.no8ez.mongodb.net/wiesjedb?retryWrites=true&w=majority")
+    db = client.todo_app
+
+    collections = db.list_collection_names()
+
+    lists = []
+    for collection in collections:
+        cards = db[collection].find()
+        list = {"name": collection, "cards": cards}
+        lists.append(list)
 
     return lists
 
